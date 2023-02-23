@@ -1,12 +1,8 @@
 function solve(array) {
-    sortedArray = array.sort();
-    let counter = 0
-    if (sortedArray) {
-        for (let name of sortedArray) {
-            counter++;
-            console.log(`${counter}.${name}`)
-        }
-    }
+    return [...array]
+    .sort((aName, bName) => aName.localeCompare(bName))
+    .map((name, index) => `${index + 1}.${name}`)
+    .join('\n');
 }
 
 
