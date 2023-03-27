@@ -63,7 +63,7 @@ function attachEvents() {
         .then((res) => res.json())
         .then(loadAllNumbers)
         .catch((err) => {
-            console.error(err);
+            console.error(err)
         })
     }
 }
