@@ -58,23 +58,31 @@ function solve() {
     editBtn.disabled = false;
     deleteBtn.disabled = false;
 
+    // Prepare inputs for edit
+
+    let editFirstName = firstNameInput.value;
+    let editLastName = lastNameInput.value;
+    let editAge = ageInput.value;
+    let editTitle = storyTitleInput.value;
+    let editStory = storyInput.value;
+
+
     // Adding event listeners on the buttons
 
     saveBtn.addEventListener('click', () => {
       mainDiv.innerHTML = '<h1>Your scary story is saved!</h1>'
     });
     editBtn.addEventListener('click', () => {
+      firstNameInput.value = editFirstName;
+      lastNameInput.value = editLastName;
+      ageInput.value = editAge;
+      storyTitleInput.value = editTitle;
+      storyInput.value = editStory;
+
       baseLi.remove();
-      firstNameInput.value = firstName;
-      lastNameInput.value = lastName;
-      ageInput.value = age;
-      storyTitleInput.value = storyTitle;
-      genreInput.value = genre;
-      storyInput.value = story;
+      
       publishButton.disabled = false;
-      saveBtn.disabled = true;
-      editBtn.disabled = true;
-      deleteBtn.disabled = true;
+      
     });
     deleteBtn.addEventListener('click', () => {
       baseLi.remove();
@@ -88,11 +96,12 @@ function solve() {
     article.appendChild(titleP);
     article.appendChild(genreP);
     article.appendChild(storyP);
-    article.appendChild(saveBtn);
-    article.appendChild(editBtn);
-    article.appendChild(deleteBtn);
 
     baseLi.appendChild(article);
+    baseLi.appendChild(saveBtn);
+    baseLi.appendChild(editBtn);
+    baseLi.appendChild(deleteBtn);
+
     previewUl.appendChild(baseLi);
 
     // Additional functionality and input cleaning
@@ -101,7 +110,6 @@ function solve() {
     lastNameInput.value = '';
     ageInput.value = '';
     storyTitleInput.value = '';
-    genreInput.value = '';
     storyInput.value = '';
   }
 }
